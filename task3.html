@@ -25,23 +25,23 @@
       #result {
         color: white;
       }
-      #atm{
+      #atm {
         margin-top: 10px;
       }
-      #students{
+      #students {
         margin-top: 100px;
       }
-      #movie{
+      #movie {
         margin-top: 110px;
       }
-      #shopping{
+      #shopping {
         margin-top: 110px;
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <h1 id="atm">Atm withdrawal machine</h1>
+      <h1 id="atm">1.Atm withdrawal machine</h1>
       <input type="number" id="atmbalance" placeholder="Balance" /><br /><br />
       <input type="number" id="atmamount" placeholder="Amount" /><br /><br />
       <input
@@ -53,53 +53,55 @@
       <button onclick="testatm()">withdraw</button>
       <p id="result"></p>
     </div>
-
     <div class="container">
-      <h2 id="students">Student Grading System with Extra Credit</h2>
+      <h2 id="students">2.Student Grading System with Extra Credit</h2>
       <input type="number" id="studentMarks" placeholder="Marks" /><br /><br />
       <input type="number" id="attendance" placeholder="Attendance" />
       <button onclick="calculategrade()">Calculate Grade</button>
       <p id="gradeResult"></p>
     </div>
-
     <div class="container">
-      <h2 id="movie">Movie Ticket Pricing with Time and Age Discount</h2>
-      <input type="number" id="age" placeholder="Age" /><br><br>
+      <h2 id="movie">3.Movie Ticket Pricing with Time and Age Discount</h2>
+      <input type="number" id="age" placeholder="Age" /><br /><br />
       <input type="number" id="showTime" placeholder="Show Time (24h)" />
-      <button onclick="CalculateTicketPrice()">
-        Calculate Ticket Price
-      </button>
+      <button onclick="CalculateTicketPrice()">Calculate Ticket Price</button>
       <p id="ticketResult"></p>
     </div>
-
     <div class="container">
-      <h2 id="shopping">Online Shopping Discount & Free Shipping</h2>
+      <h2 id="shopping">4.Online Shopping Discount & Free Shipping</h2>
       <input type="number" id="orderAmount" placeholder="Order Amount" />
-      <button onclick="CalculateFinalAmount()">
-        Calculate Final Amount
-      </button>
+      <button onclick="CalculateFinalAmount()">Calculate Final Amount</button>
       <p id="shoppingResult"></p>
     </div>
 
     <div class="container">
-      <h2>Smart Traffic Light System</h2>
-      <input type="text" id="trafficDensity" placeholder="Traffic Density" />
-      <button onclick="TrafficLightControl()">
-        Get Green Light Duration
-      </button>
-      <p id="trafficResult"></p>
+      <h2>5.Smart Traffic Light System</h2>
+
+      <label for="trafficDensity">Select Traffic Density:</label>
+      <select id="trafficDensity">
+        <option value="heavy">Heavy Traffic</option>
+        <option value="moderate">Moderate Traffic</option>
+        <option value="light">Light Traffic</option>
+      </select>
+
+      <button onclick="startTrafficLight()">Start Timer</button>
+
+      <h3>Green Light Duration: <span id="duration">60</span> seconds</h3>
     </div>
 
     <div class="container">
-      <h2>E-commerce Coupon Redemption</h2>
-      <input type="number" id="couponOrderAmount" placeholder="Order Amount" /><br><br>
+      <h2>6.E-commerce Coupon Redemption</h2>
+      <input
+        type="number"
+        id="couponOrderAmount"
+        placeholder="Order Amount"
+      /><br /><br />
       <input type="text" id="couponCode" placeholder="Coupon Code" />
-      <button onclick="ApplyCoupon()">Apply Coupon</button>
+      <button onclick="testApplyCoupon()">Apply Coupon</button>
       <p id="couponResult"></p>
     </div>
-
     <div class="container">
-      <h2>Fitness Membership Plan</h2>
+      <h2>7.Fitness Membership Plan</h2>
       <input
         type="text"
         id="planType"
@@ -110,29 +112,32 @@
       <button onclick="testChoosePlan()">Choose Plan</button>
       <p id="planResult"></p>
     </div>
-
     <div class="container">
-      <h2>Electricity Bill Calculation with Peak Hours</h2>
-      <input type="number" id="units" placeholder="Units" /><br><br>
+      <h2>8.Electricity Bill Calculation with Peak Hours</h2>
+      <input type="number" id="units" placeholder="Units" /><br /><br />
       <input type="number" id="timeOfDay" placeholder="Time of Day (24h)" />
       <button onclick="testCalculateElectricityBill()">Calculate Bill</button>
       <p id="billResult"></p>
     </div>
     <div class="container">
-      <h2>Job Application Filter</h2>
-      <input type="number" id="jobAge" placeholder="Age" /><br><br>
-      <input type="number" id="experience" placeholder="Experience (years)" /><br><br>
+      <h2>9.Job Application Filter</h2>
+      <input type="number" id="jobAge" placeholder="Age" /><br /><br />
+      <input
+        type="number"
+        id="experience"
+        placeholder="Experience (years)"
+      /><br /><br />
       <input type="text" id="qualification" placeholder="Qualification" />
       <button onclick="testIsEligibleForJob()">Check Eligibility</button>
       <p id="jobResult"></p>
     </div>
     <div class="container">
-      <h2>Flight Ticket Booking System</h2>
+      <h2>10.Flight Ticket Booking System</h2>
       <input
         type="text"
         id="classType"
         placeholder="Class Type (Business/First)"
-      /><br><br>
+      /><br /><br />
       <input
         type="number"
         id="luggageWeight"
@@ -143,14 +148,12 @@
       <button onclick="testCalculateFlightFare()">Calculate Fare</button>
       <p id="flightResult"></p>
     </div>
-
     <script>
       function atmwithdrawal(balance, amount, pin, enteredpin) {
         if (enteredpin !== pin) {
           return "Incorrect Pin";
         }
         if (amount > balance) {
-          dsnn;
           return "Insufficient Balance";
         }
         if (amount % 100 !== 0) {
@@ -165,16 +168,13 @@
         const amount = Number(document.getElementById("atmamount").value);
         const entered = document.getElementById("enterpin").value;
         const pin = document.getElementById("pin").value;
-
         const result = atmwithdrawal(balance, amount, pin, entered);
         document.getElementById("result").innerText = result;
       }
-
       function students_marks(marks, attendance) {
         if (attendance > 90) {
           marks += 5;
         }
-
         if (marks >= 90) {
           return "A";
         } else if (marks >= 80) {
@@ -187,7 +187,6 @@
           return "F";
         }
       }
-
       function calculategrade() {
         const marks = parseFloat(document.getElementById("studentMarks").value);
         const attendance = parseFloat(
@@ -196,7 +195,6 @@
         const result = students_marks(marks, attendance);
         document.getElementById("gradeResult").innerText = `Grade: ${result}`;
       }
-
       function calculateTicketPrice(age, showTime) {
         if (
           isNaN(age) ||
@@ -207,7 +205,6 @@
         ) {
           return "Invalid input!";
         }
-
         let price = 12;
         if (showTime < 17) {
           price *= 0.8;
@@ -219,7 +216,6 @@
         }
         return price.toFixed(2);
       }
-
       function CalculateTicketPrice() {
         const age = parseInt(document.getElementById("age").value);
         const showTime = parseInt(document.getElementById("showTime").value);
@@ -229,18 +225,27 @@
         ).innerText = `Ticket Price: $${result}`;
       }
       function calculateFinalAmount(orderAmount) {
+        if (isNaN(orderAmount) || orderAmount <= 0) {
+          return "Please enter a valid order amount.";
+        }
+
         let discount = 0;
         if (orderAmount > 1000) {
           discount = 0.2;
         } else if (orderAmount >= 500) {
           discount = 0.1;
         }
+
         let finalAmount = orderAmount - orderAmount * discount;
+
+        // Add shipping cost if final amount is below $50
         if (finalAmount < 50) {
           finalAmount += 10;
         }
-        return finalAmount.toFixed(2);
+
+        return `Final Amount: $${finalAmount.toFixed(2)}`;
       }
+
       function CalculateFinalAmount() {
         const orderAmount = parseFloat(
           document.getElementById("orderAmount").value
@@ -250,14 +255,31 @@
       }
 
       function trafficLightControl(density) {
-        if (density === "Heavy Traffic") return 60;
-        else if (density === "Moderate Traffic") return 40;
-        return 20;
+        if (density === "heavy") return 60;
+        if (density === "moderate") return 40;
+        if (density === "light") return 20;
+        return 0; // Default case
       }
-      function testTrafficLightControl() {
+
+      let countdown; // Store the countdown interval
+
+      function startTrafficLight() {
         const density = document.getElementById("trafficDensity").value;
-        const result = trafficLightControl(density);
-        document.getElementById("trafficResult").innerText = result;
+        let duration = trafficLightControl(density);
+        document.getElementById("duration").innerText = duration;
+
+        const greenLight = document.getElementById("greenLight");
+
+        clearInterval(countdown);
+        countdown = setInterval(() => {
+          if (duration > 0) {
+            duration--; // Reduce time by 1 second
+            document.getElementById("duration").innerText = duration;
+          } else {
+            clearInterval(countdown);
+            greenLight.style.background = "gray";
+          }
+        }, 1000);
       }
 
       function applyCoupon(orderAmount, couponCode) {
@@ -278,7 +300,6 @@
         const result = applyCoupon(orderAmount, couponCode);
         document.getElementById("couponResult").innerText = result;
       }
-
       function choosePlan(planType, wantsTrainer, wantsDietPlan) {
         if (planType === "Basic") {
           return "Basic Plan: $20/month";
@@ -296,7 +317,6 @@
         const result = choosePlan(planType, wantsTrainer, wantsDietPlan);
         document.getElementById("planResult").innerText = result;
       }
-
       function calculateElectricityBill(units, timeOfDay) {
         let rate;
         if (units < 100) {
@@ -318,14 +338,11 @@
         const result = calculateElectricityBill(units, timeOfDay);
         document.getElementById("billResult").innerText = result;
       }
-
       function isEligibleForJob(age, experience, qualification) {
         if (isNaN(age) || isNaN(experience) || age < 0 || experience < 0) {
           return "Invalid input! Please enter valid numbers.";
         }
-
         const formattedQualification = qualification.trim().toLowerCase();
-
         if (
           age >= 21 &&
           age <= 55 &&
@@ -337,18 +354,15 @@
           return "You are not eligible for the job.";
         }
       }
-
       function testIsEligibleForJob() {
         const age = parseInt(document.getElementById("jobAge").value);
         const experience = parseInt(
           document.getElementById("experience").value
         );
         const qualification = document.getElementById("qualification").value;
-
         const result = isEligibleForJob(age, experience, qualification);
         document.getElementById("jobResult").innerText = result;
       }
-
       function calculateFlightFare(
         classType,
         luggageWeight,
