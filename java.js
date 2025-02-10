@@ -16,9 +16,6 @@
         input {
             margin: 5px;
         }
-    </style>
-</head>
-<body>
     <h1>The Output for written functions that you can check out in the same repository</h1>
     <div class="problem">
         <h2>1. ATM Withdrawal System</h2>
