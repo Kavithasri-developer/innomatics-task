@@ -53,7 +53,6 @@
       <button onclick="testatm()">withdraw</button>
       <p id="result"></p>
     </div>
-
     <div class="container">
       <h2 id="students">Student Grading System with Extra Credit</h2>
       <input type="number" id="studentMarks" placeholder="Marks" /><br /><br />
@@ -61,7 +60,6 @@
       <button onclick="calculategrade()">Calculate Grade</button>
       <p id="gradeResult"></p>
     </div>
-
     <div class="container">
       <h2 id="movie">Movie Ticket Pricing with Time and Age Discount</h2>
       <input type="number" id="age" placeholder="Age" /><br /><br />
@@ -69,7 +67,6 @@
       <button onclick="CalculateTicketPrice()">Calculate Ticket Price</button>
       <p id="ticketResult"></p>
     </div>
-
     <div class="container">
       <h2 id="shopping">Online Shopping Discount & Free Shipping</h2>
       <input type="number" id="orderAmount" placeholder="Order Amount" />
@@ -78,6 +75,7 @@
     </div>
     <div class="container">
       <h2>Smart Traffic Light System</h2>
+
       <label for="trafficDensity">Select Traffic Density:</label>
       <select id="trafficDensity">
         <option value="heavy">Heavy Traffic</option>
@@ -88,13 +86,8 @@
       <button onclick="startTrafficLight()">Start Timer</button>
 
       <h3>Green Light Duration: <span id="duration">60</span> seconds</h3>
-
-      <!-- <div class="traffic-light">
-          <div class="light"></div>
-          <div class="light"></div>
-          <div class="light" id="greenLight"></div>
-      </div> -->
     </div>
+
     <div class="container">
       <h2>E-commerce Coupon Redemption</h2>
       <input
@@ -103,10 +96,9 @@
         placeholder="Order Amount"
       /><br /><br />
       <input type="text" id="couponCode" placeholder="Coupon Code" />
-      <button onclick="ApplyCoupon()">Apply Coupon</button>
+      <button onclick="testApplyCoupon()">Apply Coupon</button>
       <p id="couponResult"></p>
     </div>
-
     <div class="container">
       <h2>Fitness Membership Plan</h2>
       <input
@@ -119,7 +111,6 @@
       <button onclick="testChoosePlan()">Choose Plan</button>
       <p id="planResult"></p>
     </div>
-
     <div class="container">
       <h2>Electricity Bill Calculation with Peak Hours</h2>
       <input type="number" id="units" placeholder="Units" /><br /><br />
@@ -156,7 +147,6 @@
       <button onclick="testCalculateFlightFare()">Calculate Fare</button>
       <p id="flightResult"></p>
     </div>
-
     <script>
       function atmwithdrawal(balance, amount, pin, enteredpin) {
         if (enteredpin !== pin) {
@@ -178,16 +168,13 @@
         const amount = Number(document.getElementById("atmamount").value);
         const entered = document.getElementById("enterpin").value;
         const pin = document.getElementById("pin").value;
-
         const result = atmwithdrawal(balance, amount, pin, entered);
         document.getElementById("result").innerText = result;
       }
-
       function students_marks(marks, attendance) {
         if (attendance > 90) {
           marks += 5;
         }
-
         if (marks >= 90) {
           return "A";
         } else if (marks >= 80) {
@@ -200,7 +187,6 @@
           return "F";
         }
       }
-
       function calculategrade() {
         const marks = parseFloat(document.getElementById("studentMarks").value);
         const attendance = parseFloat(
@@ -209,7 +195,6 @@
         const result = students_marks(marks, attendance);
         document.getElementById("gradeResult").innerText = `Grade: ${result}`;
       }
-
       function calculateTicketPrice(age, showTime) {
         if (
           isNaN(age) ||
@@ -220,7 +205,6 @@
         ) {
           return "Invalid input!";
         }
-
         let price = 12;
         if (showTime < 17) {
           price *= 0.8;
@@ -232,7 +216,6 @@
         }
         return price.toFixed(2);
       }
-
       function CalculateTicketPrice() {
         const age = parseInt(document.getElementById("age").value);
         const showTime = parseInt(document.getElementById("showTime").value);
@@ -261,10 +244,12 @@
         const result = calculateFinalAmount(orderAmount);
         document.getElementById("shoppingResult").innerText = result;
       }
+
       function trafficLightControl(density) {
         if (density === "heavy") return 60;
         if (density === "moderate") return 40;
         if (density === "light") return 20;
+        return 0; // Default case
       }
 
       let countdown; // Store the countdown interval
@@ -276,20 +261,18 @@
 
         const greenLight = document.getElementById("greenLight");
 
-        // Clear any existing countdown timer
         clearInterval(countdown);
 
-        // Turn on the green light
-        greenLight.style.background = "green";
+        // // Turn on the green light
+        // greenLight.style.background = "green";
 
-        // Start countdown
         countdown = setInterval(() => {
           if (duration > 0) {
             duration--; // Reduce time by 1 second
             document.getElementById("duration").innerText = duration;
           } else {
-            clearInterval(countdown); // Stop countdown when it reaches 0
-            greenLight.style.background = "gray"; // Turn off green light
+            clearInterval(countdown);
+            greenLight.style.background = "gray";
           }
         }, 1000);
       }
@@ -312,7 +295,6 @@
         const result = applyCoupon(orderAmount, couponCode);
         document.getElementById("couponResult").innerText = result;
       }
-
       function choosePlan(planType, wantsTrainer, wantsDietPlan) {
         if (planType === "Basic") {
           return "Basic Plan: $20/month";
@@ -330,7 +312,6 @@
         const result = choosePlan(planType, wantsTrainer, wantsDietPlan);
         document.getElementById("planResult").innerText = result;
       }
-
       function calculateElectricityBill(units, timeOfDay) {
         let rate;
         if (units < 100) {
@@ -352,14 +333,11 @@
         const result = calculateElectricityBill(units, timeOfDay);
         document.getElementById("billResult").innerText = result;
       }
-
       function isEligibleForJob(age, experience, qualification) {
         if (isNaN(age) || isNaN(experience) || age < 0 || experience < 0) {
           return "Invalid input! Please enter valid numbers.";
         }
-
         const formattedQualification = qualification.trim().toLowerCase();
-
         if (
           age >= 21 &&
           age <= 55 &&
@@ -371,18 +349,15 @@
           return "You are not eligible for the job.";
         }
       }
-
       function testIsEligibleForJob() {
         const age = parseInt(document.getElementById("jobAge").value);
         const experience = parseInt(
           document.getElementById("experience").value
         );
         const qualification = document.getElementById("qualification").value;
-
         const result = isEligibleForJob(age, experience, qualification);
         document.getElementById("jobResult").innerText = result;
       }
-
       function calculateFlightFare(
         classType,
         luggageWeight,
