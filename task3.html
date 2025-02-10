@@ -25,16 +25,16 @@
       #result {
         color: white;
       }
-      #atm{
+      #atm {
         margin-top: 10px;
       }
-      #students{
+      #students {
         margin-top: 100px;
       }
-      #movie{
+      #movie {
         margin-top: 110px;
       }
-      #shopping{
+      #shopping {
         margin-top: 110px;
       }
     </style>
@@ -64,35 +64,44 @@
 
     <div class="container">
       <h2 id="movie">Movie Ticket Pricing with Time and Age Discount</h2>
-      <input type="number" id="age" placeholder="Age" /><br><br>
+      <input type="number" id="age" placeholder="Age" /><br /><br />
       <input type="number" id="showTime" placeholder="Show Time (24h)" />
-      <button onclick="CalculateTicketPrice()">
-        Calculate Ticket Price
-      </button>
+      <button onclick="CalculateTicketPrice()">Calculate Ticket Price</button>
       <p id="ticketResult"></p>
     </div>
 
     <div class="container">
       <h2 id="shopping">Online Shopping Discount & Free Shipping</h2>
       <input type="number" id="orderAmount" placeholder="Order Amount" />
-      <button onclick="CalculateFinalAmount()">
-        Calculate Final Amount
-      </button>
+      <button onclick="CalculateFinalAmount()">Calculate Final Amount</button>
       <p id="shoppingResult"></p>
     </div>
-
     <div class="container">
       <h2>Smart Traffic Light System</h2>
-      <input type="text" id="trafficDensity" placeholder="Traffic Density" />
-      <button onclick="TrafficLightControl()">
-        Get Green Light Duration
-      </button>
-      <p id="trafficResult"></p>
-    </div>
+      <label for="trafficDensity">Select Traffic Density:</label>
+      <select id="trafficDensity">
+        <option value="heavy">Heavy Traffic</option>
+        <option value="moderate">Moderate Traffic</option>
+        <option value="light">Light Traffic</option>
+      </select>
 
+      <button onclick="startTrafficLight()">Start Timer</button>
+
+      <h3>Green Light Duration: <span id="duration">60</span> seconds</h3>
+
+      <!-- <div class="traffic-light">
+          <div class="light"></div>
+          <div class="light"></div>
+          <div class="light" id="greenLight"></div>
+      </div> -->
+    </div>
     <div class="container">
       <h2>E-commerce Coupon Redemption</h2>
-      <input type="number" id="couponOrderAmount" placeholder="Order Amount" /><br><br>
+      <input
+        type="number"
+        id="couponOrderAmount"
+        placeholder="Order Amount"
+      /><br /><br />
       <input type="text" id="couponCode" placeholder="Coupon Code" />
       <button onclick="ApplyCoupon()">Apply Coupon</button>
       <p id="couponResult"></p>
@@ -113,15 +122,19 @@
 
     <div class="container">
       <h2>Electricity Bill Calculation with Peak Hours</h2>
-      <input type="number" id="units" placeholder="Units" /><br><br>
+      <input type="number" id="units" placeholder="Units" /><br /><br />
       <input type="number" id="timeOfDay" placeholder="Time of Day (24h)" />
       <button onclick="testCalculateElectricityBill()">Calculate Bill</button>
       <p id="billResult"></p>
     </div>
     <div class="container">
       <h2>Job Application Filter</h2>
-      <input type="number" id="jobAge" placeholder="Age" /><br><br>
-      <input type="number" id="experience" placeholder="Experience (years)" /><br><br>
+      <input type="number" id="jobAge" placeholder="Age" /><br /><br />
+      <input
+        type="number"
+        id="experience"
+        placeholder="Experience (years)"
+      /><br /><br />
       <input type="text" id="qualification" placeholder="Qualification" />
       <button onclick="testIsEligibleForJob()">Check Eligibility</button>
       <p id="jobResult"></p>
@@ -132,7 +145,7 @@
         type="text"
         id="classType"
         placeholder="Class Type (Business/First)"
-      /><br><br>
+      /><br /><br />
       <input
         type="number"
         id="luggageWeight"
@@ -248,16 +261,37 @@
         const result = calculateFinalAmount(orderAmount);
         document.getElementById("shoppingResult").innerText = result;
       }
-
       function trafficLightControl(density) {
-        if (density === "Heavy Traffic") return 60;
-        else if (density === "Moderate Traffic") return 40;
-        return 20;
+        if (density === "heavy") return 60;
+        if (density === "moderate") return 40;
+        if (density === "light") return 20;
       }
-      function testTrafficLightControl() {
+
+      let countdown; // Store the countdown interval
+
+      function startTrafficLight() {
         const density = document.getElementById("trafficDensity").value;
-        const result = trafficLightControl(density);
-        document.getElementById("trafficResult").innerText = result;
+        let duration = trafficLightControl(density);
+        document.getElementById("duration").innerText = duration;
+
+        const greenLight = document.getElementById("greenLight");
+
+        // Clear any existing countdown timer
+        clearInterval(countdown);
+
+        // Turn on the green light
+        greenLight.style.background = "green";
+
+        // Start countdown
+        countdown = setInterval(() => {
+          if (duration > 0) {
+            duration--; // Reduce time by 1 second
+            document.getElementById("duration").innerText = duration;
+          } else {
+            clearInterval(countdown); // Stop countdown when it reaches 0
+            greenLight.style.background = "gray"; // Turn off green light
+          }
+        }, 1000);
       }
 
       function applyCoupon(orderAmount, couponCode) {
