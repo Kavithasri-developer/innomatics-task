@@ -41,7 +41,7 @@
   </head>
   <body>
     <div class="container">
-      <h1 id="atm">Atm withdrawal machine</h1>
+      <h1 id="atm">1.Atm withdrawal machine</h1>
       <input type="number" id="atmbalance" placeholder="Balance" /><br /><br />
       <input type="number" id="atmamount" placeholder="Amount" /><br /><br />
       <input
@@ -54,27 +54,28 @@
       <p id="result"></p>
     </div>
     <div class="container">
-      <h2 id="students">Student Grading System with Extra Credit</h2>
+      <h2 id="students">2.Student Grading System with Extra Credit</h2>
       <input type="number" id="studentMarks" placeholder="Marks" /><br /><br />
       <input type="number" id="attendance" placeholder="Attendance" />
       <button onclick="calculategrade()">Calculate Grade</button>
       <p id="gradeResult"></p>
     </div>
     <div class="container">
-      <h2 id="movie">Movie Ticket Pricing with Time and Age Discount</h2>
+      <h2 id="movie">3.Movie Ticket Pricing with Time and Age Discount</h2>
       <input type="number" id="age" placeholder="Age" /><br /><br />
       <input type="number" id="showTime" placeholder="Show Time (24h)" />
       <button onclick="CalculateTicketPrice()">Calculate Ticket Price</button>
       <p id="ticketResult"></p>
     </div>
     <div class="container">
-      <h2 id="shopping">Online Shopping Discount & Free Shipping</h2>
+      <h2 id="shopping">4.Online Shopping Discount & Free Shipping</h2>
       <input type="number" id="orderAmount" placeholder="Order Amount" />
       <button onclick="CalculateFinalAmount()">Calculate Final Amount</button>
       <p id="shoppingResult"></p>
     </div>
+
     <div class="container">
-      <h2>Smart Traffic Light System</h2>
+      <h2>5.Smart Traffic Light System</h2>
 
       <label for="trafficDensity">Select Traffic Density:</label>
       <select id="trafficDensity">
@@ -89,7 +90,7 @@
     </div>
 
     <div class="container">
-      <h2>E-commerce Coupon Redemption</h2>
+      <h2>6.E-commerce Coupon Redemption</h2>
       <input
         type="number"
         id="couponOrderAmount"
@@ -100,7 +101,7 @@
       <p id="couponResult"></p>
     </div>
     <div class="container">
-      <h2>Fitness Membership Plan</h2>
+      <h2>7.Fitness Membership Plan</h2>
       <input
         type="text"
         id="planType"
@@ -112,14 +113,14 @@
       <p id="planResult"></p>
     </div>
     <div class="container">
-      <h2>Electricity Bill Calculation with Peak Hours</h2>
+      <h2>8.Electricity Bill Calculation with Peak Hours</h2>
       <input type="number" id="units" placeholder="Units" /><br /><br />
       <input type="number" id="timeOfDay" placeholder="Time of Day (24h)" />
       <button onclick="testCalculateElectricityBill()">Calculate Bill</button>
       <p id="billResult"></p>
     </div>
     <div class="container">
-      <h2>Job Application Filter</h2>
+      <h2>9.Job Application Filter</h2>
       <input type="number" id="jobAge" placeholder="Age" /><br /><br />
       <input
         type="number"
@@ -131,7 +132,7 @@
       <p id="jobResult"></p>
     </div>
     <div class="container">
-      <h2>Flight Ticket Booking System</h2>
+      <h2>10.Flight Ticket Booking System</h2>
       <input
         type="text"
         id="classType"
@@ -153,7 +154,6 @@
           return "Incorrect Pin";
         }
         if (amount > balance) {
-          dsnn;
           return "Insufficient Balance";
         }
         if (amount % 100 !== 0) {
@@ -225,18 +225,27 @@
         ).innerText = `Ticket Price: $${result}`;
       }
       function calculateFinalAmount(orderAmount) {
+        if (isNaN(orderAmount) || orderAmount <= 0) {
+          return "Please enter a valid order amount.";
+        }
+
         let discount = 0;
         if (orderAmount > 1000) {
           discount = 0.2;
         } else if (orderAmount >= 500) {
           discount = 0.1;
         }
+
         let finalAmount = orderAmount - orderAmount * discount;
+
+        // Add shipping cost if final amount is below $50
         if (finalAmount < 50) {
           finalAmount += 10;
         }
-        return finalAmount.toFixed(2);
+
+        return `Final Amount: $${finalAmount.toFixed(2)}`;
       }
+
       function CalculateFinalAmount() {
         const orderAmount = parseFloat(
           document.getElementById("orderAmount").value
@@ -262,10 +271,6 @@
         const greenLight = document.getElementById("greenLight");
 
         clearInterval(countdown);
-
-        // // Turn on the green light
-        // greenLight.style.background = "green";
-
         countdown = setInterval(() => {
           if (duration > 0) {
             duration--; // Reduce time by 1 second
