@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Clock</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #222;
+            color: white;
+            text-align: center;
+        }
+        #heading {
+            color: white;
+            text-shadow: 3px 3px 5px black;
+            margin-top: 20px;
+            font-size: 28px;
+        }
+        #container {
+            background-image: url('https://images.pexels.com/photos/9327267/pexels-photo-9327267.jpeg?auto=compress&cs=tinysrgb&w=1200');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .timebox {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 500px;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid white;
+            color: black;
+            font-family: cursive;
+            font-size: 18px;
+            background-color: rgba(255, 255, 255, 0.3);
+            margin-top: 10px;
+            box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.2);
+        }
+        .timebox h1 {
+            font-size: 20px;
+        }
+        .timebox p {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #heading {
+                font-size: 24px;
+            }
+            .timebox {
+                width: 95%;
+                font-size: 16px;
+            }
+            .timebox h1 {
+                font-size: 18px;
+            }
+            .timebox p {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #heading {
+                font-size: 20px;
+            }
+            .timebox {
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+                font-size: 14px;
+            }
+            .timebox h1 {
+                font-size: 16px;
+            }
+            .timebox p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1 id="heading">World Clock Center</h1>
+        <div class="timebox"><h1>India</h1><p id="indiantime"></p></div>
+        <div class="timebox"><h1>Paris</h1><p id="paristime"></p></div>
+        <div class="timebox"><h1>New York</h1><p id="newyorktime"></p></div>
+        <div class="timebox"><h1>London</h1><p id="londontime"></p></div>
+        <div class="timebox"><h1>Chicago</h1><p id="chicagotime"></p></div>
+        <div class="timebox"><h1>Tokyo</h1><p id="tokyotime"></p></div>
+    </div>
+
+    <script>
+        function updateTime(id, timeZone) {
+            document.getElementById(id).innerHTML = new Date().toLocaleTimeString("en-US", {
+                timeZone: timeZone,
+                hour12: false
+            });
+        }
+
+        function updateClocks() {
+            updateTime('indiantime', 'Asia/Kolkata');
+            updateTime('paristime', 'Europe/Paris');
+            updateTime('newyorktime', 'America/New_York');
+            updateTime('londontime', 'Europe/London');
+            updateTime('chicagotime', 'America/Chicago');
+            updateTime('tokyotime', 'Asia/Tokyo');
+        }
+
+        setInterval(updateClocks, 1000);
+        updateClocks(); // Call function once on load
+    </script>
+</body>
+</html>
+
+
