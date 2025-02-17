@@ -4,12 +4,14 @@
     padding: 0;
     box-sizing: border-box;
   }
-  
   body {
     font-family: 'Arial', sans-serif;
-    background-color: #f8f4e6; /* Soft beige background */
+    /* background: url('shop.jpeg') no-repeat center center/cover;  */
     color: #333;
+    margin: 0;
+    padding: 0;
   }
+  
   
   .container {
     width: 85%;
