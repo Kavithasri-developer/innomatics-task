@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrewHub Coffee Order</title>
+  <link rel="stylesheet" href="brew.css">
+</head>
+<body>
+  <div class="container">
+    <h1>BrewHub Coffee Shop</h1>
+    <div class="menu">
+      <h2>Coffee Menu</h2>
+      <div class="coffee-item">
+        <label for="coffee1">Cappuccino</label>
+        <input type="number" id="coffee1" value="0" min="0" onchange="updateTotal()">
+        <div class="addons">
+          <input type="checkbox" id="addon1" onchange="updateTotal()"> Extra Shot
+        </div>
+        <div class="addons">
+          <input type="checkbox" id="addon2" onchange="updateTotal()"> Whipped Cream
+        </div>
+      </div>
+
+      <div class="coffee-item">
+        <label for="coffee2">Latte</label>
+        <input type="number" id="coffee2" value="0" min="0" onchange="updateTotal()">
+        <div class="addons">
+          <input type="checkbox" id="addon3" onchange="updateTotal()"> Extra Shot
+        </div>
+        <div class="addons">
+          <input type="checkbox" id="addon4" onchange="updateTotal()"> Vanilla Syrup
+        </div>
+      </div>
+    </div>
+
+    <div class="order-summary">
+      <h2>Order Summary</h2>
+      <p>Subtotal: <span id="subtotal">$0.00</span></p>
+      <p>Total: <span id="total">$0.00</span></p>
+    </div>
+
+    <button onclick="generateInvoice()">Generate Invoice</button>
+
+    <div id="invoice" class="invoice" style="display:none;">
+      <h2>Invoice</h2>
+      <div id="invoice-details"></div>
+      <button onclick="printInvoice()">Print Invoice</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

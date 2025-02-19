@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="" type="image/png" href="">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>coffee shop</title>
+  
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: arial, sans-serif;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        background-color: white;
+        padding: 20px 1px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      .logo {
+        font-size: 20px;
+        font-weight: bold;
+        margin-left: 30px;
+      }
+
+      .nav-links {
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+        margin-right: 20px;
+      }
+      .nav-links li {
+        list-style: none;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: black;
+      }
+      .nav-links a:hover {
+        color: orange;
+      }
+      img {
+        height: 100vh;
+        width: 100vw;
+      }
+      #image h1 {
+        position: absolute;
+        top: 20%;
+        left: 30%;
+        text-align: center;
+        color: white;
+        text-shadow: 3px 3px black;
+        font-size: 45px;
+      }
+      h2 {
+        position: absolute;
+        top: 32%;
+        left: 43%;
+        text-align: center;
+        color: white;
+        text-shadow: 3px 3px black;
+        font-size: 20px;
+      }
+      #button {
+        position: absolute;
+        top: 40%;
+        left: 47%;
+        height: 10vh;
+        width: 10vw;
+        background: #5c3d2e;
+        color: white;
+        border-radius: 10px;
+        border: 1px #5c3d2e;
+        font-size: bold;
+      }
+      .box {
+        border: 1px solid #ddd;
+        height: 510px;
+        width: 350px;
+        display: inline-block;
+        margin-top: 100px;
+        margin-left: 90px;
+        border-radius: 10px;
+        text-shadow: 2px 2px white;
+        padding: 9px;
+        border-radius: 10px;
+        background: white;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3 ease-in-out;
+      }
+      #menu {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        gap: 40px;
+      }
+      .box img {
+        width: 100%;
+        height: 70%;
+        object-fit: cover;
+        padding: 20px;
+        border-radius: 40px;
+      }
+      .box:hover {
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .box h4 {
+        text-align: center;
+        font-size: large;
+      }
+
+      .box p {
+        text-align: center;
+        margin-top: 20px;
+      }
+      #h1 {
+        margin-left: 640px;
+        margin-top: 50px;
+        font-weight: 800;
+      }
+      #break {
+        height: 90vh;
+        width: 90vw;
+      }
+
+      #aboutus {
+        margin-left: 50px;
+        margin-top: 90px;
+      }
+      #heading {
+        margin-left: 550px;
+        font-weight: 800;
+      }
+      #coffeeseed {
+        height: 40vh;
+        width: 40vw;
+        margin-bottom: 10px;
+        margin-left: 700px;
+      }
+
+      .aboutus {
+        text-align: center;
+        padding: 20px;
+        margin-top: 100px;
+      }
+
+      .about-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        max-width: 1000px;
+        margin: auto;
+      }
+
+      .aboutus img {
+        width: 100%;
+        height: auto;
+        max-width: 400px;
+        border-radius: 10px;
+      }
+      .about {
+        text-align: left;
+        max-width: 450px;
+        font-size: 18px;
+        line-height: 1.5;
+      }
+      #brewed {
+        margin-bottom: 100px;
+        font-weight: 800;
+        text-align: center;
+      }
+      .contact-container {
+        width: 100%;
+        max-width: 2000px;
+        margin-top: 200px;
+        height: 70vh;
+        margin-left: 90px;
+      }
+      .contact-form {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      #sub{
+        border: 1px solid #5c3d2e;
+        margin-left: 580px;
+        width: 140px;
+        height: 40px;
+        border-radius: 10px;
+        background: #5c3d2e;
+        color: white;
+      }
+
+      
+      .footer {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 14px;
+        color: #666;
+        background-color: rgba(0, 0, 0, 0.422);
+        height: 30px;
+        padding: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">Brewed Awakening</div>
+      <ul class="nav-links">
+        <li><a href="#image">Home</a></li>
+        <li><a href="#ALLabout">About us</a></li>
+        <li><a href="#Allcontact">Contact</a></li>
+      </ul>
+    </nav>
+    <div id="image">
+      <img
+        src="https://images.pexels.com/photos/30444143/pexels-photo-30444143/free-photo-of-close-up-of-roasted-coffee-beans-in-focus.jpeg?auto=compress&cs=tinysrgb&w=600"
+        alt="coffee"
+      />
+      <h1>Welcome to Brewed Awakening</h1>
+      <h2>Your daily dose of caffeine</h2>
+      <a href="#menu"><button id="button">View Menu</button></a>
+    </div>
+    <h1 id="h1">Menu</h1>
+    <div id="menu">
+      <!-- <h1 id="h1">Menu</h1> -->
+      <div class="box1 box">
+        <img
+          src="https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=600"
+          alt="coffee"
+        />
+        <h4>Espresso</h4>
+        <p>
+          A strong and bold coffee<br />
+          experience.
+        </p>
+        <p>$2.50</p>
+      </div>
+      <div class="box2 box">
+        <img
+          src="https://media.istockphoto.com/id/1056608518/photo/close-up-top-view-lattee-coffe-on-wooden-background-and-copyspace-drink-and-beverage-concept.jpg?b=1&s=612x612&w=0&k=20&c=92jenzdhoBHGbeQXxTrQWzO2tC9YhheqBuXSyz7OXhI="
+          alt="coffee"
+        />
+        <h4>Latte</h4>
+        <p>
+          Smooth expresso with Steamed<br />
+          milk.
+        </p>
+        <p>$3.50</p>
+      </div>
+      <div class="box3 box">
+        <img
+          src="https://images.pexels.com/photos/28623717/pexels-photo-28623717/free-photo-of-cozy-cappuccino-in-a-new-york-cafe.jpeg?auto=compress&cs=tinysrgb&w=600"
+          alt="coffee"
+        />
+        <h4>Cappuccino</h4>
+        <p>
+          A delightful mix of Espresso,milk<br />
+          and foam.
+        </p>
+        <p>$3.75</p>
+      </div>
+    </div>
+    <div id="break">
+      <h1 id="h1">Breakfast Menu</h1>
+      <div class="box4 box">
+        <img
+          src="https://images.pexels.com/photos/6529912/pexels-photo-6529912.jpeg?auto=compress&cs=tinysrgb&w=600"
+          alt="bread"
+        />
+        <h4>Breakfast Sandwich</h4>
+        <p>
+          Scrambled eggs, cheese and <br />
+          bacon on a fresh bun.
+        </p>
+        <p>$20</p>
+      </div>
+      <div class="box5 box">
+        <img
+          src="https://images.pexels.com/photos/5490920/pexels-photo-5490920.jpeg?auto=compress&cs=tinysrgb&w=600"
+          alt="bread"
+        />
+        <h4>Buttermilk Pancake</h4>
+        <p>Fullty pancakes served with <br />maple syrup</p>
+        <p>$5.00</p>
+      </div>
+      <div class="box6 box">
+        <img
+          src="https://images.pexels.com/photos/3510248/pexels-photo-3510248.jpeg?auto=compress&cs=tinysrgb&w=600"
+          alt="bread"
+        />
+        <h4>
+          Bagel with cream <br />
+          cheese
+        </h4>
+        <p>Fresh with bagel topped with cheesy cream<br />cheese spread</p>
+        <p>$3.00</p>
+      </div>
+      <div class="aboutus" id="ALLabout">
+        <h1 id="h1">About Us</h1>
+        <div class="about-container">
+          <div class="about">
+            <p>
+              At Brewed Awakening, we believe in crafting the perfect cup of
+              coffee. Our beans are sourced from the best farms around the
+              world. Each cup is brewed with love and passion by our experienced
+              baristas to deliver a rich and smooth experience.
+            </p>
+
+            <p>
+              We pride ourselves on sustainability and quality, ensuring that
+              every bean is ethically sourced and every sip is a delightful
+              experience. Whether you're here for a quick espresso or a relaxing
+              latte, we aim to make your coffee break a moment to cherish.
+            </p>
+
+            <p>
+              <strong>Our Mission:</strong> To bring you the best coffee
+              experience every day, with a smile and a warm cup.
+            </p>
+          </div>
+          <img
+            src="https://images.pexels.com/photos/2456424/pexels-photo-2456424.jpeg?auto=compress&cs=tinysrgb&w=600"
+            alt="coffee"
+          />
+        </div>
+      </div>
+      <div class="contact-container" id="Allcontact">
+        <form class="contact-form">
+          <h1 id="heading">Contact Us</h1>
+          <input type="text" placeholder="Your Name" required />
+          <input type="email" placeholder="Your Email" required />
+          <textarea placeholder="Your Message" rows="4" required></textarea>
+          <a href=""><button id="sub">Send Message</button></a>
+        </form>
+        <div class="footer">
+          &copy; 2024 Brewed Awakening.All rghts reserved.
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

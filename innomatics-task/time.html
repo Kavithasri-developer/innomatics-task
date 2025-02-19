@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+    #heading{
+        color: white;
+        text-align: center;
+        text-shadow: 7px 7px 6px black;
+    }
+    #container{
+        background-image: url(https://images.pexels.com/photos/9327267/pexels-photo-9327267.jpeg?auto=compress&cs=tinysrgb&w=600s://images.pexels.com/photos/12475266/pexels-photo-12475266.jpeg?auto=compress&cs=tinysrgb&w=600);
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 900px;
+        /* width: 1100px; */
+    }
+    .timebox{
+        display: flex;
+        justify-content: space-around;
+        gap: 10px;
+        border: 2px solid white;
+        color: rgba(19, 3, 3, 0.963);
+        font-family: cursive;
+        font-size: 20px;
+        background-color: rgba(255,255,255,0.3);
+        margin-top: 10px;
+       
+       
+       
+    }
+    
+
+</style>
+<body>
+    
+    
+    <div id="container">
+        
+    <h1 id="heading">World Clock Center</h1>
+        <div class="timebox">
+            <h1>India</h1>
+            <p id="indiantime"></p>
+        </div>
+        <div class="timebox">
+            <h1>paris</h1>
+            <p id="paristime"></p>
+        </div>
+        <div class="timebox">
+            <h1>newyork</h1>
+            <p id="newyorktime"></p>
+        </div>
+        <div class="timebox">
+            <h1>london</h1>
+            <p id="londontime"></p>
+        </div>
+        <div class="timebox">
+            <h1>chicago</h1>
+            <p id="chicagotime"></p>
+        </div>
+    </div>
+    <div class="timebox">
+        <h1>Tokyo</h1>
+        <p id="to"></p>
+    </div>
+
+
+
+       <script>
+       
+    var indiantime= function(){
+    document.getElementById('indiantime').innerHTML=new Date().toLocaleString("en-us",{timeZone:'Asia/Kolkata',timeStyle:'long',hourCycle:'h24'})}
+    setInterval(indiantime,1000)
+
+    var paristime= function(){
+        document.getElementById('paristime').innerHTML=new Date().toLocaleString("en-us",{timeZone:'Europe/paris'})
+        
+    }
+    setInterval(paristime,1000)
+
+   var newyorktime=function(){
+    document.getElementById('newyorktime').innerHTML=new Date().toLocaleString("en-us",{timeZone:'America/New_york'})
+   }
+   setInterval(newyorktime,1000)
+
+   var londontime=function(){
+    document.getElementById('londontime').innerHTML=new Date().toLocaleString("en-us",{timeZone:'Europe/London'})
+   }
+   setInterval(londontime,1000 )
+
+    var chicago=function(){
+        document.getElementById('chicagotime').innerHTML=new Date().toLocaleString("en-us",{timeZone:'America/chicago'})
+    }
+    setInterval(chicago,1000)
+
+   var tokyo=function(){
+     document.getElementById('to').innerHTML=new Date().toLocaleString("en-us",{timeZone:'Asia/Tokyo'})
+    }
+    setInterval(tokyo,1000);
+
+
+
+
+
+    // document.getElementById("demo").innerHTML=new Date()
+
+    //   function friendcall1(){
+    //     console.log("hi i will call you after 3 sec");
+        
+    //   }
+    //   function friend(){
+    //     setInterval(() => {
+    //         console.log("see call you later")
+            
+    //     },3000);
+    //   }
+    //   friendcall1()
+    //   friend()
+
+//    function worldclock(){
+//     const now= new Date();
+//     document.getElementById('demo').innerHTML=now;
+//    }
+//    setInterval(worldclock,1000)
+
+
+
+
+      </script>
+    
+</body>
+</html> 
