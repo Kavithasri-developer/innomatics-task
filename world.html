@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Clock Center</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-image: url('https://images.pexels.com/photos/9327267/pexels-photo-9327267.jpeg?auto=compress&cs=tinysrgb&w=600');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: white;
+            text-shadow: 3px 3px 5px black;
+            margin-bottom: 20px;
+        }
+        .timebox {
+            display: flex;
+            justify-content: space-between;
+            width: 300px;
+            padding: 10px;
+            border: 2px solid white;
+            background: rgba(255, 255, 255, 0.3);
+            color: black;
+            font-size: 18px;
+            margin: 5px 0;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>World Clock Center</h1>
+    <div class="timebox"><span>India</span> <span id="india"></span></div>
+    <div class="timebox"><span>Paris</span> <span id="paris"></span></div>
+    <div class="timebox"><span>New York</span> <span id="newyork"></span></div>
+    <div class="timebox"><span>London</span> <span id="london"></span></div>
+    <div class="timebox"><span>Chicago</span> <span id="chicago"></span></div>
+    <div class="timebox"><span>Tokyo</span> <span id="tokyo"></span></div>
+
+    <script>
+        function updateTime(id, timeZone) {
+            document.getElementById(id).innerText = new Date().toLocaleTimeString("en-US", {
+                timeZone: timeZone,
+                hour12: false
+            });
+        }
+        function updateClocks() {
+            updateTime('india', 'Asia/Kolkata');
+            updateTime('paris', 'Europe/Paris');
+            updateTime('newyork', 'America/New_York');
+            updateTime('london', 'Europe/London');
+            updateTime('chicago', 'America/Chicago');
+            updateTime('tokyo', 'Asia/Tokyo');
+        }
+        setInterval(updateClocks, 1000);
+        updateClocks(); // Initialize immediately
+    </script>
+</body>
+</html>
