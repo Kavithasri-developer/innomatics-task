@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Match Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="category-selection">
+        <h2>Choose a Category</h2>
+        <button onclick="startGame('fruits')">🍎 Fruits</button>
+        <button onclick="startGame('animals')">🐶 Animals</button>
+        <button onclick="startGame('vehicles')">🚗 Vehicles</button>
+        <button onclick="startGame('nature')">🌿 Nature</button>
+    </div>
+
+    <div class="timer">
+        Time Left: <span id="time-left">60</span> seconds
+    </div>
+
+    <div class="game-board" id="game-board">
+        <!-- Game cards will be dynamically added here -->
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
+
+
+
+
